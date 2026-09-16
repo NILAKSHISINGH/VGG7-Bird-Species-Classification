@@ -212,7 +212,7 @@ def predict():
                 "species": CLASS_NAMES[index.item()],
                 "confidence": round(
                     probability.item() * 100,
-                    2
+                    
                 )
             })
 
