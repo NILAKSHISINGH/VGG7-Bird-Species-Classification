@@ -9,12 +9,6 @@ const confidenceText = document.getElementById("confidenceText");
 const confidenceFill = document.getElementById("confidenceFill");
 const fileName = document.getElementById("fileName");
 
-console.log("Script loaded");
-console.log("uploadInput:", uploadInput);
-console.log("imagePreview:", imagePreview);
-console.log("emptyPreview:", emptyPreview);
-console.log("imagePreviewContainer:", imagePreviewContainer);
-
 let selectedFile = null;
 
 
@@ -22,45 +16,32 @@ let selectedFile = null;
 // IMAGE SELECTION
 // ============================================================
 
-if (uploadInput) {
-    uploadInput.addEventListener("change", function () {
-        console.log("File input change event fired");
-        
-        const file = this.files[0];
-        console.log("Selected file:", file);
+uploadInput.addEventListener("change", function () {
 
-        if (!file) {
-            return;
-        }
+    const file = this.files[0];
 
-        if (!file.type.startsWith("image/")) {
-            alert("Please select an image file.");
-            return;
-        }
+    if (!file) {
+        return;
+    }
 
-        selectedFile = file;
-        console.log("Processing file:", file.name);
+    if (!file.type.startsWith("image/")) {
+        alert("Please select an image file.");
+        return;
+    }
 
-        const reader = new FileReader();
+    selectedFile = file;
 
-        reader.onload = function (event) {
-            console.log("FileReader onload triggered");
-            console.log("Image preview element:", imagePreview);
-            
-            imagePreview.src = event.target.result;
-            fileName.textContent = file.name;
+    const reader = new FileReader();
 
-            console.log("Adding hidden to emptyPreview");
-            emptyPreview.classList.add("hidden");
-            
-            console.log("Removing hidden from imagePreviewContainer");
-            imagePreviewContainer.classList.remove("hidden");
+    reader.onload = function (event) {
 
-            console.log("Current classes:", imagePreviewContainer.className);
-        };
+        imagePreview.src = event.target.result;
+        fileName.textContent = file.name;
 
-        reader.readAsDataURL(file);
-    });
-} else {
-    console.error("uploadInput element not found!");
-}
+        emptyPreview.classList.add("hidden");
+        imagePreviewContainer.classList.remove("hidden");
+
+    };
+
+    reader.readAsDataURL(file);
+});
