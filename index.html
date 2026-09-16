@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BirdVision AI | Bird Species Classifier</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">🦜</span>
+                <span>BirdVision<span class="logo-ai"> AI</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#identify">Identify</a>
+                <a href="#model">Model</a>
+                <a href="#performance">Performance</a>
+                <a href="#how-it-works">How It Works</a>
+            </div>
+
+            <a href="#identify" class="nav-button">
+                Try Now
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-background"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                AI Bird Species Classification
+            </div>
+
+            <h1>
+                Discover the
+                <span>Bird Behind the Image.</span>
+            </h1>
+
+            <p>
+                BirdVision AI uses a custom VGG7 convolutional neural network
+                trained with PyTorch to identify bird species from images.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#identify" class="primary-button">
+                    Identify a Bird
+                    <span>→</span>
+                </a>
+
+                <a href="#model" class="secondary-button">
+                    Explore the Model
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <strong>20</strong>
+                    <span>Bird Species</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="hero-stat">
+                    <strong>87%</strong>
+                    <span>Validation Accuracy</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="hero-stat">
+                    <strong>85%</strong>
+                    <span>Test Accuracy</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-bird">
+            <div class="bird-circle">
+                🦅
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= IDENTIFY ================= -->
+
+    <section class="section identify-section" id="identify">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                IMAGE CLASSIFICATION
+            </div>
+
+            <h2>
+                Identify a bird
+            </h2>
+
+            <p>
+                Upload an image and let the VGG7 model analyze it.
+            </p>
+
+        </div>
+
+
+        <div class="classifier-card">
+
+            <!-- UPLOAD SIDE -->
+
+            <div class="upload-panel">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h3>Upload your bird image</h3>
+
+                <p>
+                    Select a JPG, JPEG or PNG image
+                </p>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/png,image/jpeg,image/jpg"
+                    hidden
+                >
+
+                <label
+                    for="imageInput"
+                    class="upload-button"
+                >
+                    Choose Image
+                </label>
+
+                <p class="upload-info">
+                    Recommended: 224 × 224 pixels or larger
+                </p>
+
+            </div>
+
+
+            <!-- PREVIEW SIDE -->
+
+            <div class="preview-panel">
+
+                <div id="emptyPreview" class="empty-preview">
+
+                    <div class="preview-icon">
+                        🐦
+                    </div>
+
+                    <h3>Your prediction will appear here</h3>
+
+                    <p>
+                        Upload an image to get started.
+                    </p>
+
+                </div>
+
+
+                <div id="imagePreviewContainer" class="image-preview-container hidden">
+
+                    <img
+                        id="imagePreview"
+                        src=""
+                        alt="Uploaded bird"
+                    >
+
+                    <div class="preview-overlay">
+
+                        <span id="fileName">
+                            Bird image
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREDICTION -->
+
+        <div
+            id="predictionBox"
+            class="prediction-box hidden"
+        >
+
+            <div class="prediction-header">
+
+                <div>
+                    <span class="prediction-label">
+                        PREDICTED SPECIES
+                    </span>
+
+                    <h2 id="predictionName">
+                        American Kestrel
+                    </h2>
+                </div>
+
+                <div class="confidence-circle">
+
+                    <strong id="confidenceValue">
+                        87%
+                    </strong>
+
+                    <span>
+                        confidence
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="confidence-section">
+
+                <div class="confidence-top">
+
+                    <span>
+                        Model confidence
+                    </span>
+
+                    <strong id="confidenceText">
+                        87%
+                    </strong>
+
+                </div>
+
+                <div class="confidence-bar">
+
+                    <div
+                        id="confidenceFill"
+                        class="confidence-fill"
+                        style="width: 87%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="top-predictions">
+
+                <h3>
+                    Top predictions
+                </h3>
+
+                <div class="prediction-row">
+
+                    <span>
+                        <b>01</b>
+                        American Kestrel
+                    </span>
+
+                    <strong>87%</strong>
+
+                </div>
+
+                <div class="prediction-row">
+
+                    <span>
+                        <b>02</b>
+                        American Goldfinch
+                    </span>
+
+                    <strong>7%</strong>
+
+                </div>
+
+                <div class="prediction-row">
+
+                    <span>
+                        <b>03</b>
+                        Alexandrine Parakeet
+                    </span>
+
+                    <strong>4%</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MODEL ================= -->
+
+    <section class="section model-section" id="model">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                ABOUT THE MODEL
+            </div>
+
+            <h2>
+                Built with VGG7
+            </h2>
+
+            <p>
+                A custom convolutional neural network built with PyTorch
+                for 20-class bird species classification.
+            </p>
+
+        </div>
+
+
+        <div class="model-grid">
+
+            <div class="model-card">
+
+                <div class="model-card-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    VGG7 CNN
+                </h3>
+
+                <p>
+                    Custom convolutional architecture with four convolutional
+                    blocks followed by fully connected classification layers.
+                </p>
+
+            </div>
+
+
+            <div class="model-card">
+
+                <div class="model-card-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    PyTorch
+                </h3>
+
+                <p>
+                    The model was implemented and trained using PyTorch
+                    and torchvision.
+                </p>
+
+            </div>
+
+
+            <div class="model-card">
+
+                <div class="model-card-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    20 Classes
+                </h3>
+
+                <p>
+                    The classifier recognizes 20 different bird species
+                    from the training dataset.
+                </p>
+
+            </div>
+
+
+            <div class="model-card">
+
+                <div class="model-card-icon">
+                    🖼️
+                </div>
+
+                <h3>
+                    224 × 224 Input
+                </h3>
+
+                <p>
+                    Images are resized and normalized before being passed
+                    into the neural network.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PERFORMANCE ================= -->
+
+    <section class="section performance-section" id="performance">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                MODEL PERFORMANCE
+            </div>
+
+            <h2>
+                Evaluation results
+            </h2>
+
+            <p>
+                Results from the existing trained VGG7 model.
+            </p>
+
+        </div>
+
+
+        <div class="metrics-grid">
+
+            <div class="metric-card">
+
+                <span class="metric-label">
+                    Validation Accuracy
+                </span>
+
+                <strong>
+                    87.00%
+                </strong>
+
+                <span class="metric-description">
+                    Validation dataset
+                </span>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">
+                    Test Accuracy
+                </span>
+
+                <strong>
+                    85.00%
+                </strong>
+
+                <span class="metric-description">
+                    100 test images
+                </span>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">
+                    Precision
+                </span>
+
+                <strong>
+                    87.81%
+                </strong>
+
+                <span class="metric-description">
+                    Macro precision
+                </span>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">
+                    Recall
+                </span>
+
+                <strong>
+                    85.00%
+                </strong>
+
+                <span class="metric-description">
+                    Macro recall
+                </span>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">
+                    F1 Score
+                </span>
+
+                <strong>
+                    84.99%
+                </strong>
+
+                <span class="metric-description">
+                    Macro F1
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ERROR ANALYSIS ================= -->
+
+    <section class="section analysis-section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                ERROR ANALYSIS
+            </div>
+
+            <h2>
+                Understanding the model
+            </h2>
+
+            <p>
+                Visual evaluation artifacts from the trained classifier.
+            </p>
+
+        </div>
+
+
+        <div class="analysis-grid">
+
+            <div class="analysis-card">
+
+                <div class="analysis-image">
+
+                    <img
+                        src="../results/final_confusion_matrix.png"
+                        alt="Confusion matrix"
+                        onerror="this.parentElement.classList.add('image-missing')"
+                    >
+
+                </div>
+
+                <div class="analysis-content">
+
+                    <span>
+                        EVALUATION
+                    </span>
+
+                    <h3>
+                        Confusion Matrix
+                    </h3>
+
+                    <p>
+                        Shows how predictions are distributed across
+                        the 20 bird species.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="analysis-card">
+
+                <div class="analysis-image">
+
+                    <img
+                        src="../results/incorrect_predictions.png"
+                        alt="Incorrect predictions"
+                        onerror="this.parentElement.classList.add('image-missing')"
+                    >
+
+                </div>
+
+                <div class="analysis-content">
+
+                    <span>
+                        ERROR ANALYSIS
+                    </span>
+
+                    <h3>
+                        Incorrect Predictions
+                    </h3>
+
+                    <p>
+                        Examples of test images that were incorrectly
+                        classified by the model.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <section class="section workflow-section" id="how-it-works">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                WORKFLOW
+            </div>
+
+            <h2>
+                How BirdVision works
+            </h2>
+
+        </div>
+
+
+        <div class="workflow">
+
+            <div class="workflow-step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <div class="step-content">
+
+                    <h3>
+                        Upload
+                    </h3>
+
+                    <p>
+                        Upload a bird image through the website.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <div class="step-content">
+
+                    <h3>
+                        Preprocess
+                    </h3>
+
+                    <p>
+                        The image is resized to 224 × 224 and normalized.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <div class="step-content">
+
+                    <h3>
+                        VGG7
+                    </h3>
+
+                    <p>
+                        The trained VGG7 neural network analyzes the image.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <div class="step-content">
+
+                    <h3>
+                        Prediction
+                    </h3>
+
+                    <p>
+                        The predicted species and confidence are displayed.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TECH STACK ================= -->
+
+    <section class="section tech-section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                TECHNOLOGY
+            </div>
+
+            <h2>
+                Technology stack
+            </h2>
+
+        </div>
+
+
+        <div class="tech-list">
+
+            <div class="tech-item">
+                <span>🐍</span>
+                Python
+            </div>
+
+            <div class="tech-item">
+                <span>🔥</span>
+                PyTorch
+            </div>
+
+            <div class="tech-item">
+                <span>👁️</span>
+                Torchvision
+            </div>
+
+            <div class="tech-item">
+                <span>⚡</span>
+                CUDA
+            </div>
+
+            <div class="tech-item">
+                <span>📊</span>
+                Scikit-learn
+            </div>
+
+            <div class="tech-item">
+                <span>📈</span>
+                Matplotlib
+            </div>
+
+            <div class="tech-item">
+                <span>🌐</span>
+                HTML / CSS / JavaScript
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+                    <span class="logo-icon">🦜</span>
+                    BirdVision AI
+                </div>
+
+                <p>
+                    AI-powered bird species classification
+                    using a custom VGG7 CNN.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#identify">
+                    Identify
+                </a>
+
+                <a href="#model">
+                    Model
+                </a>
+
+                <a href="#performance">
+                    Performance
+                </a>
+
+                <a href="#how-it-works">
+                    How It Works
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 BirdVision AI
+            </span>
+
+            <span>
+                VGG7 · PyTorch · 20 Species
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
