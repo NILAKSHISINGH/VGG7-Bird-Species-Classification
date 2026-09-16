@@ -1,0 +1,9 @@
+birdcnn/
+dataset/
+BIRDS_SPECIES--IMAGE-CLASSIFICATION-main/
+BIRDS_SPECIES--IMAGE-CLASSIFICATION-main.zip
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/

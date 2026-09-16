@@ -1,0 +1,31 @@
+VGG7 BIRD CLASSIFICATION - FINAL RESULTS
+==========================================
+
+Number of classes: 20
+Test images: 100
+Correct predictions: 85
+Incorrect predictions: 15
+Test accuracy: 85.00%
+
+Per-class performance:
+
+ABBOTTS BABBLER | Precision: 1.0000 | Recall: 0.8000 | F1: 0.8889 | Support: 5
+ABBOTTS BOOBY | Precision: 0.7500 | Recall: 0.6000 | F1: 0.6667 | Support: 5
+ABYSSINIAN GROUND HORNBILL | Precision: 0.6250 | Recall: 1.0000 | F1: 0.7692 | Support: 5
+AFRICAN CROWNED CRANE | Precision: 1.0000 | Recall: 0.6000 | F1: 0.7500 | Support: 5
+AFRICAN EMERALD CUCKOO | Precision: 1.0000 | Recall: 0.8000 | F1: 0.8889 | Support: 5
+AFRICAN FIREFINCH | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Support: 5
+AFRICAN OYSTER CATCHER | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Support: 5
+AFRICAN PIED HORNBILL | Precision: 0.7143 | Recall: 1.0000 | F1: 0.8333 | Support: 5
+AFRICAN PYGMY GOOSE | Precision: 0.7143 | Recall: 1.0000 | F1: 0.8333 | Support: 5
+ALBATROSS | Precision: 1.0000 | Recall: 0.8000 | F1: 0.8889 | Support: 5
+ALBERTS TOWHEE | Precision: 1.0000 | Recall: 0.8000 | F1: 0.8889 | Support: 5
+ALEXANDRINE PARAKEET | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Support: 5
+ALPINE CHOUGH | Precision: 0.7500 | Recall: 0.6000 | F1: 0.6667 | Support: 5
+ALTAMIRA YELLOWTHROAT | Precision: 1.0000 | Recall: 0.8000 | F1: 0.8889 | Support: 5
+AMERICAN AVOCET | Precision: 0.8000 | Recall: 0.8000 | F1: 0.8000 | Support: 5
+AMERICAN BITTERN | Precision: 0.6250 | Recall: 1.0000 | F1: 0.7692 | Support: 5
+AMERICAN COOT | Precision: 1.0000 | Recall: 0.8000 | F1: 0.8889 | Support: 5
+AMERICAN FLAMINGO | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Support: 5
+AMERICAN GOLDFINCH | Precision: 0.8333 | Recall: 1.0000 | F1: 0.9091 | Support: 5
+AMERICAN KESTREL | Precision: 0.7500 | Recall: 0.6000 | F1: 0.6667 | Support: 5

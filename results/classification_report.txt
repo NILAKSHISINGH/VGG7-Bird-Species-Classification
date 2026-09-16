@@ -1,0 +1,34 @@
+VGG7 BIRD CLASSIFICATION REPORT
+====================================
+
+Test Images: 100
+Correct Predictions: 85
+Incorrect Predictions: 15
+Test Accuracy: 85.00%
+
+                            precision    recall  f1-score   support
+
+           ABBOTTS BABBLER     1.0000    0.8000    0.8889         5
+             ABBOTTS BOOBY     0.7500    0.6000    0.6667         5
+ABYSSINIAN GROUND HORNBILL     0.6250    1.0000    0.7692         5
+     AFRICAN CROWNED CRANE     1.0000    0.6000    0.7500         5
+    AFRICAN EMERALD CUCKOO     1.0000    0.8000    0.8889         5
+         AFRICAN FIREFINCH     1.0000    1.0000    1.0000         5
+    AFRICAN OYSTER CATCHER     1.0000    1.0000    1.0000         5
+     AFRICAN PIED HORNBILL     0.7143    1.0000    0.8333         5
+       AFRICAN PYGMY GOOSE     0.7143    1.0000    0.8333         5
+                 ALBATROSS     1.0000    0.8000    0.8889         5
+            ALBERTS TOWHEE     1.0000    0.8000    0.8889         5
+      ALEXANDRINE PARAKEET     1.0000    1.0000    1.0000         5
+             ALPINE CHOUGH     0.7500    0.6000    0.6667         5
+     ALTAMIRA YELLOWTHROAT     1.0000    0.8000    0.8889         5
+           AMERICAN AVOCET     0.8000    0.8000    0.8000         5
+          AMERICAN BITTERN     0.6250    1.0000    0.7692         5
+             AMERICAN COOT     1.0000    0.8000    0.8889         5
+         AMERICAN FLAMINGO     1.0000    1.0000    1.0000         5
+        AMERICAN GOLDFINCH     0.8333    1.0000    0.9091         5
+          AMERICAN KESTREL     0.7500    0.6000    0.6667         5
+
+                  accuracy                         0.8500       100
+                 macro avg     0.8781    0.8500    0.8499       100
+              weighted avg     0.8781    0.8500    0.8499       100
