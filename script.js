@@ -1,47 +1,18 @@
-const uploadInput = document.getElementById("imageInput");
+const imageInput = document.getElementById("imageInput");
+const emptyPreview = document.getElementById("emptyPreview");
 const imagePreviewContainer = document.getElementById("imagePreviewContainer");
 const imagePreview = document.getElementById("imagePreview");
-const emptyPreview = document.getElementById("emptyPreview");
-const predictionBox = document.getElementById("predictionBox");
-const predictionName = document.getElementById("predictionName");
-const confidenceValue = document.getElementById("confidenceValue");
-const confidenceText = document.getElementById("confidenceText");
-const confidenceFill = document.getElementById("confidenceFill");
 const fileName = document.getElementById("fileName");
 
-let selectedFile = null;
+imageInput.addEventListener("change", () => {
+    const [file] = imageInput.files;
 
+    if (!file) return;
 
-// ============================================================
-// IMAGE SELECTION
-// ============================================================
-
-uploadInput.addEventListener("change", function () {
-
-    const file = this.files[0];
-
-    if (!file) {
-        return;
-    }
-
-    if (!file.type.startsWith("image/")) {
-        alert("Please select an image file.");
-        return;
-    }
-
-    selectedFile = file;
-
-    const reader = new FileReader();
-
-    reader.onload = function (event) {
-
-        imagePreview.src = event.target.result;
-        fileName.textContent = file.name;
-
-        emptyPreview.classList.add("hidden");
-        imagePreviewContainer.classList.remove("hidden");
-
-    };
-
-    reader.readAsDataURL(file);
+    imagePreview.src = URL.createObjectURL(file);
+    imagePreview.onload = () => URL.revokeObjectURL(imagePreview.src);
+    imagePreview.alt = `Uploaded bird: ${file.name}`;
+    fileName.textContent = file.name;
+    emptyPreview.classList.add("hidden");
+    imagePreviewContainer.classList.remove("hidden");
 });
