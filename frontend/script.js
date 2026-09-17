@@ -3,6 +3,8 @@ const emptyPreview = document.getElementById("emptyPreview");
 const imagePreviewContainer = document.getElementById("imagePreviewContainer");
 const imagePreview = document.getElementById("imagePreview");
 const fileName = document.getElementById("fileName");
+const identifyButton = document.getElementById("identifyButton");
+const staticNotice = document.getElementById("staticNotice");
 
 imageInput.addEventListener("change", () => {
     const [file] = imageInput.files;
@@ -15,4 +17,10 @@ imageInput.addEventListener("change", () => {
     fileName.textContent = file.name;
     emptyPreview.classList.add("hidden");
     imagePreviewContainer.classList.remove("hidden");
+    identifyButton.disabled = false;
+    staticNotice.classList.add("hidden");
+});
+
+identifyButton.addEventListener("click", () => {
+    staticNotice.classList.remove("hidden");
 });

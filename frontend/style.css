@@ -1264,3 +1264,212 @@ footer {
     }
 
 }
+
+/* =========================================================
+   PYTORCH / STREAMLIT-STYLE INTERFACE
+   ========================================================= */
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f4f1e6;
+    color: #1b2b22;
+}
+
+.logo,
+.hero h1,
+.section-heading h2,
+.upload-panel h3,
+.empty-preview h3,
+.prediction-header h2,
+.model-card h3,
+.metric-card strong {
+    font-family: "Fraunces", serif;
+}
+
+.navbar {
+    background: rgba(244, 241, 230, 0.92);
+    border-bottom-color: #e4dfcf;
+}
+
+.nav-container {
+    max-width: 1100px;
+}
+
+.hero {
+    max-width: 1100px;
+    min-height: 0;
+    margin: 24px auto 0;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #163527 0%, #24553d 55%, #397252 100%);
+}
+
+.hero-content {
+    padding: 52px 48px;
+}
+
+.hero h1 {
+    margin-top: 14px;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+}
+
+.hero p {
+    max-width: 640px;
+    color: #d8e5dc;
+}
+
+.hero-badge {
+    padding: 7px 14px;
+    color: #f4f1e6;
+}
+
+.status-dot,
+.hero-bird,
+.hero-stats {
+    display: none;
+}
+
+.hero-buttons {
+    margin-top: 28px;
+}
+
+.primary-button,
+.identify-button {
+    background: #163527;
+    color: #f4f1e6;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 22px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.hero .primary-button {
+    background: #f4f1e6;
+    color: #163527;
+}
+
+.identify-button {
+    margin-top: 14px;
+}
+
+.identify-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.static-notice {
+    width: 100%;
+    margin-top: 14px;
+    padding: 11px 12px;
+    border: 1px solid #ebd8ae;
+    border-radius: 12px;
+    background: #fbf3e4;
+    color: #7a5a1e !important;
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.section {
+    max-width: 1100px;
+    padding: 46px 24px;
+}
+
+.identify-section {
+    padding-top: 34px;
+}
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2rem, 4vw, 2.7rem);
+}
+
+.classifier-card {
+    gap: 24px;
+}
+
+.upload-panel,
+.preview-panel,
+.prediction-box,
+.model-card,
+.metric-card,
+.analysis-card {
+    border-color: #e4dfcf;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(22, 53, 39, 0.07);
+}
+
+.upload-panel {
+    min-height: 360px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 32px;
+    text-align: left;
+}
+
+.upload-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    font-size: 1.35rem;
+}
+
+.upload-panel p {
+    max-width: 360px;
+}
+
+.upload-button {
+    display: inline-block;
+    margin-top: 22px;
+    border-radius: 12px;
+}
+
+.upload-info {
+    margin-top: 16px !important;
+    line-height: 1.45;
+}
+
+.preview-panel {
+    min-height: 360px;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.empty-preview {
+    width: 100%;
+    padding: 32px;
+    text-align: left;
+}
+
+.preview-icon {
+    display: none;
+}
+
+.model-section,
+.performance-section {
+    background: transparent;
+}
+
+.model-grid,
+.metrics-grid {
+    gap: 14px;
+}
+
+.model-card,
+.metric-card {
+    background: #fff;
+}
+
+@media (max-width: 750px) {
+    .hero {
+        margin: 16px 16px 0;
+    }
+
+    .hero-content {
+        padding: 38px 28px;
+    }
+}

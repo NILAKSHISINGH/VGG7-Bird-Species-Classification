@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -53,17 +53,16 @@
 
             <div class="hero-badge">
                 <span class="status-dot"></span>
-                AI Bird Species Classification
+                VGG7 &middot; PyTorch &middot; 20 species
             </div>
 
             <h1>
-                Discover the
-                <span>Bird Behind the Image.</span>
+                BirdVision AI
             </h1>
 
             <p>
-                BirdVision AI uses a custom VGG7 convolutional neural network
-                trained with PyTorch to identify bird species from images.
+                AI-powered bird species classification using a custom VGG7
+                deep learning model.
             </p>
 
             <div class="hero-buttons">
@@ -120,7 +119,7 @@
         <div class="section-heading">
 
             <div class="section-label">
-                IMAGE CLASSIFICATION
+                PYTORCH INFERENCE
             </div>
 
             <h2>
@@ -128,7 +127,7 @@
             </h2>
 
             <p>
-                Upload an image and let the VGG7 model analyze it.
+                Upload a bird image and prepare it for the VGG7 classifier.
             </p>
 
         </div>
@@ -144,10 +143,10 @@
                     ↑
                 </div>
 
-                <h3>Upload your bird image</h3>
+                <h3>Upload a bird image</h3>
 
                 <p>
-                    Select a JPG, JPEG or PNG image
+                    PNG, JPG or JPEG &middot; Recommended: 224 &times; 224 pixels or larger
                 </p>
 
                 <input
@@ -163,6 +162,14 @@
                 >
                     Choose Image
                 </label>
+
+                <button id="identifyButton" class="identify-button" type="button" disabled>
+                    Identify Bird
+                </button>
+
+                <p id="staticNotice" class="static-notice hidden" role="status">
+                    The page is ready for your image. Deploy app.py on Streamlit to run the VGG7 PyTorch model online.
+                </p>
 
                 <p class="upload-info">
                     Recommended: 224 × 224 pixels or larger
@@ -181,10 +188,10 @@
                         🐦
                     </div>
 
-                    <h3>Your prediction will appear here</h3>
+                    <h3>Prediction</h3>
 
                     <p>
-                        Upload an image to get started.
+                        Upload an image on the left, then click Identify Bird.
                     </p>
 
                 </div>
