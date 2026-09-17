@@ -454,44 +454,42 @@ def render_upload_and_predict(model, class_names, device, model_error):
     left, right = st.columns([1, 1], gap="large")
 
     with left:
-        st.markdown('<div class="bv-card">', unsafe_allow_html=True)
-        st.markdown("**Upload a bird image**")
-        st.caption("PNG, JPG or JPEG • Recommended image size: 224 × 224 or larger")
-        uploaded_file = st.file_uploader(
-            " ", type=["png", "jpg", "jpeg"], label_visibility="collapsed"
-        )
+        with st.container(border=True):
+            st.markdown("**Upload a bird image**")
+            st.caption("PNG, JPG or JPEG • Recommended image size: 224 × 224 or larger")
+            uploaded_file = st.file_uploader(
+                " ", type=["png", "jpg", "jpeg"], label_visibility="collapsed"
+            )
 
-        image = None
-        if uploaded_file is not None:
-            try:
-                image = Image.open(uploaded_file)
-                st.image(image, use_container_width=True, caption="Uploaded image")
-            except Exception:
-                st.markdown(
-                    '<div class="bv-error">This file doesn\'t look like a valid image. '
-                    'Please upload a PNG or JPEG.</div>',
-                    unsafe_allow_html=True,
-                )
+            image = None
+            if uploaded_file is not None:
+                try:
+                    image = Image.open(uploaded_file)
+                    st.image(image, use_container_width=True, caption="Uploaded image")
+                except Exception:
+                    st.markdown(
+                        '<div class="bv-error">This file doesn\'t look like a valid image. '
+                        'Please upload a PNG or JPEG.</div>',
+                        unsafe_allow_html=True,
+                    )
 
-        predict_clicked = st.button("Identify Bird", type="primary", disabled=image is None)
-        st.markdown("</div>", unsafe_allow_html=True)
+            predict_clicked = st.button("Identify Bird", type="primary", disabled=image is None)
 
     with right:
-        st.markdown('<div class="bv-card" style="min-height: 100%;">', unsafe_allow_html=True)
-        if uploaded_file is None:
-            st.markdown("**Prediction**")
-            st.caption("Upload an image on the left, then click *Identify Bird* to see the result here.")
-        elif predict_clicked and image is not None:
-            with st.spinner("Running the VGG7 model..."):
-                start = time.time()
-                tensor = preprocess_image(image)
-                results = predict_image(model, tensor, class_names, device, top_k=3)
-                elapsed = time.time() - start
-            render_prediction_result(results, elapsed)
-        else:
-            st.markdown("**Ready to predict**")
-            st.caption("Click *Identify Bird* to run the model on your uploaded image.")
-        st.markdown("</div>", unsafe_allow_html=True)
+        with st.container(border=True):
+            if uploaded_file is None:
+                st.markdown("**Prediction**")
+                st.caption("Upload an image on the left, then click *Identify Bird* to see the result here.")
+            elif predict_clicked and image is not None:
+                with st.spinner("Running the VGG7 model..."):
+                    start = time.time()
+                    tensor = preprocess_image(image)
+                    results = predict_image(model, tensor, class_names, device, top_k=3)
+                    elapsed = time.time() - start
+                render_prediction_result(results, elapsed)
+            else:
+                st.markdown("**Ready to predict**")
+                st.caption("Click *Identify Bird* to run the model on your uploaded image.")
 
 
 def render_prediction_result(results, elapsed_seconds):
